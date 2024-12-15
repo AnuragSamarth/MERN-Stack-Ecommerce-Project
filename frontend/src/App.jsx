@@ -4,6 +4,7 @@ import Home from "./pages/Home.tsx"
 import About from "./pages/About.tsx"
 import Login from "./pages/auth/Login.tsx"
 import Signup from "./pages/auth/Signup.tsx"
+import CartPage from "./pages/CartPage.tsx"
 
 function App() {
   const router = createBrowserRouter([
@@ -19,6 +20,10 @@ function App() {
           path: "/about",
           element: <About/>
         },
+        {
+          path: "/cart",
+          element: <CartPage/>
+        }
       ]
     },
     {
