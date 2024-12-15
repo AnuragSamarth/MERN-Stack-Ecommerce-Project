@@ -1,3 +1,6 @@
+import React from "react";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
+
 import { useState } from "react";
 import Card from "../../components/Card";
 import {
@@ -11,9 +14,15 @@ import {
   MenuButton,
   MenuItem,
   MenuItems,
-} from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
+} from "@headlessui/react";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  ChevronDownIcon,
+  FunnelIcon,
+  MinusIcon,
+  PlusIcon,
+  Squares2X2Icon,
+} from "@heroicons/react/20/solid";
 
 const products = [
   {
@@ -27,7 +36,7 @@ const products = [
     color: "Black",
   },
   {
-    id: 1,
+    id: 2,
     name: "Basic Tee",
     href: "#",
     imageSrc:
@@ -37,7 +46,7 @@ const products = [
     color: "Black",
   },
   {
-    id: 1,
+    id: 3,
     name: "Basic Tee",
     href: "#",
     imageSrc:
@@ -47,17 +56,7 @@ const products = [
     color: "Black",
   },
   {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/plus/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 1,
+    id: 4,
     name: "Basic Tee",
     href: "#",
     imageSrc:
@@ -69,53 +68,53 @@ const products = [
 ];
 
 const sortOptions = [
-  { name: 'Most Popular', href: '#', current: true },
-  { name: 'Best Rating', href: '#', current: false },
-  { name: 'Newest', href: '#', current: false },
-  { name: 'Price: Low to High', href: '#', current: false },
-  { name: 'Price: High to Low', href: '#', current: false },
-]
+  { name: "Most Popular", href: "#", current: true },
+  { name: "Best Rating", href: "#", current: false },
+  { name: "Newest", href: "#", current: false },
+  { name: "Price: Low to High", href: "#", current: false },
+  { name: "Price: High to Low", href: "#", current: false },
+];
 
 const filters = [
   {
-    id: 'color',
-    name: 'Color',
+    id: "color",
+    name: "Color",
     options: [
-      { value: 'white', label: 'White', checked: false },
-      { value: 'beige', label: 'Beige', checked: false },
-      { value: 'blue', label: 'Blue', checked: true },
-      { value: 'brown', label: 'Brown', checked: false },
-      { value: 'green', label: 'Green', checked: false },
-      { value: 'purple', label: 'Purple', checked: false },
+      { value: "white", label: "White", checked: false },
+      { value: "beige", label: "Beige", checked: false },
+      { value: "blue", label: "Blue", checked: true },
+      { value: "brown", label: "Brown", checked: false },
+      { value: "green", label: "Green", checked: false },
+      { value: "purple", label: "Purple", checked: false },
     ],
   },
   {
-    id: 'category',
-    name: 'Category',
+    id: "category",
+    name: "Category",
     options: [
-      { value: 'new-arrivals', label: 'New Arrivals', checked: false },
-      { value: 'sale', label: 'Sale', checked: false },
-      { value: 'travel', label: 'Travel', checked: true },
-      { value: 'organization', label: 'Organization', checked: false },
-      { value: 'accessories', label: 'Accessories', checked: false },
+      { value: "new-arrivals", label: "New Arrivals", checked: false },
+      { value: "sale", label: "Sale", checked: false },
+      { value: "travel", label: "Travel", checked: true },
+      { value: "organization", label: "Organization", checked: false },
+      { value: "accessories", label: "Accessories", checked: false },
     ],
   },
   {
-    id: 'size',
-    name: 'Size',
+    id: "size",
+    name: "Size",
     options: [
-      { value: '2l', label: '2L', checked: false },
-      { value: '6l', label: '6L', checked: false },
-      { value: '12l', label: '12L', checked: false },
-      { value: '18l', label: '18L', checked: false },
-      { value: '20l', label: '20L', checked: false },
-      { value: '40l', label: '40L', checked: true },
+      { value: "2l", label: "2L", checked: false },
+      { value: "6l", label: "6L", checked: false },
+      { value: "12l", label: "12L", checked: false },
+      { value: "18l", label: "18L", checked: false },
+      { value: "20l", label: "20L", checked: false },
+      { value: "40l", label: "40L", checked: true },
     ],
   },
-]
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function ProductsList() {
@@ -161,7 +160,7 @@ export default function ProductsList() {
                     className="border-t border-gray-200 px-4 py-6"
                   >
                     <h3 className="-mx-2 -my-3 flow-root">
-                      <DisclosureButton className="group flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
+                      <DisclosureButton className="group flex w-full items-center justify-between px-2 py-3 text-gray-400 hover:text-gray-500">
                         <span className="font-medium text-gray-900">
                           {section.name}
                         </span>
@@ -188,7 +187,7 @@ export default function ProductsList() {
                                   id={`filter-mobile-${section.id}-${optionIdx}`}
                                   name={`${section.id}[]`}
                                   type="checkbox"
-                                  className="col-start-1 row-start-1 appearance-none rounded border border-gray-300 bg-white checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
+                                  className="col-start-1 row-start-1 appearance-none rounded border border-gray-300 checked:border-indigo-600 checked:bg-indigo-600 indeterminate:border-indigo-600 indeterminate:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:checked:bg-gray-100 forced-colors:appearance-auto"
                                 />
                                 <svg
                                   fill="none"
@@ -229,10 +228,10 @@ export default function ProductsList() {
           </div>
         </Dialog>
 
-        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
+        <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:bg-gray-50 mt-3 mb-3 lg:rounded-xl lg:p-4">
+          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              All Products 
+              All Products
             </h1>
 
             <div className="flex items-center">
@@ -304,7 +303,7 @@ export default function ProductsList() {
                     className="border-b border-gray-200 py-6"
                   >
                     <h3 className="-my-3 flow-root">
-                      <DisclosureButton className="group flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
+                      <DisclosureButton className="group flex w-full items-center justify-between bg-white rounded-lg p-2 py-3 text-sm text-gray-400 hover:text-gray-500">
                         <span className="font-medium text-gray-900">
                           {section.name}
                         </span>
@@ -380,7 +379,74 @@ export default function ProductsList() {
                     ))}
                   </div>
                 </div>
+                {/* pagenation  */}
+                <div className="flex items-center justify-between border-t border-gray-200 bg-white rounded-lg px-4 py-3 sm:px-6 mt-4">
+                  <div className="flex flex-1 justify-between sm:hidden">
+                    <a
+                      href="#"
+                      className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                    >
+                      Previous
+                    </a>
+                    <a
+                      href="#"
+                      className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50"
+                    >
+                      Next
+                    </a>
+                  </div>
+                  <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+                    <div>
+                      <p className="text-sm text-gray-700">
+                        Showing <span className="font-medium">1</span> to{" "}
+                        <span className="font-medium">10</span> of{" "}
+                        <span className="font-medium">97</span> results
+                      </p>
+                    </div>
+                    <div>
+                      <nav
+                        aria-label="Pagination"
+                        className="isolate inline-flex -space-x-px rounded-md shadow-sm"
+                      >
+                        <a
+                          href="#"
+                          className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                        >
+                          <span className="sr-only">Previous</span>
+                          <ChevronLeftIcon
+                            aria-hidden="true"
+                            className="size-5"
+                          />
+                        </a>
+                        <a
+                          href="#"
+                          aria-current="page"
+                          className="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        >
+                          1
+                        </a>
+                        <a
+                          href="#"
+                          className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                        >
+                          2
+                        </a>
+                        <a
+                          href="#"
+                          className="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0"
+                        >
+                          <span className="sr-only">Next</span>
+                          <ChevronRightIcon
+                            aria-hidden="true"
+                            className="size-5"
+                          />
+                        </a>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
               </div>
+              {/* Product grid end  */}
             </div>
           </section>
         </main>
