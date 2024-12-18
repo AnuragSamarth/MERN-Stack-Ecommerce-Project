@@ -1,6 +1,6 @@
 import React from "react";
 
-import ProductsList from "../features/product-list/productList.tsx";
+import ProductsList from "../features/product-list/productList";
 
 export default function Home(){
     return (
